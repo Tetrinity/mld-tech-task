@@ -132,7 +132,9 @@ describe('Search API', () => {
             const getState = jest.fn().mockReturnValue({});
 
             const mockResults = {
-                data: [{ foo: 'bar' }],
+                data: {
+                    items: [{ foo: 'bar' }]
+                },
             }
             spyAxiosGet.mockResolvedValue(mockResults);
 
@@ -140,7 +142,7 @@ describe('Search API', () => {
             await search(searchTerm)(dispatch, getState);
 
             // then
-            expect(dispatch).toHaveBeenCalledWith(searchSuccess(mockResults.data));
+            expect(dispatch).toHaveBeenCalledWith(searchSuccess(mockResults.data.items));
         });
 
         it('should dispatch error if the call failed', async () => {

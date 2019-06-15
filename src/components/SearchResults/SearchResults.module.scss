@@ -1,0 +1,16 @@
+.SearchResults {
+    width: 40vw;
+    padding: 1rem;
+
+    .header {
+        margin-bottom: 0.5rem;
+    }
+
+    .repoTag {
+        display: block;
+        font-size: 90%;
+        opacity: 0.5;
+        font-style: italic;
+        margin-bottom: 2rem;
+    }
+}
