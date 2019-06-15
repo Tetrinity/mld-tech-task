@@ -8,6 +8,7 @@
 ## Running Tests
 
 - `npm test`
+- When prompted, press `a` to run all tests (by default Jest only runs tests relevant to modified files)
 
 ## Assumptions
 
