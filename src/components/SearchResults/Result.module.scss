@@ -1,0 +1,16 @@
+.Result {
+    margin: 2rem 0;
+
+    a, div {
+        margin: 0.5rem 0;
+    }
+
+    .row {
+        display: flex;
+        justify-content: space-between;
+
+        .dateTag {
+            opacity: 0.5;
+        }
+    }
+}

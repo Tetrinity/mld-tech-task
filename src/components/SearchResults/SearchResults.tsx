@@ -36,8 +36,6 @@ class SearchResults extends React.PureComponent<Props> {
             <div className={styles.SearchResults}>
                 <h1 className={styles.header}>Most Stars: '{metadata.searchTerm}'</h1>
                 <span className={styles.repoTag}>Repos created since {moment(metadata.searchMoment).subtract(1, 'month').format('Do MMMM, YYYY')}</span>
-                Results:
-
                 {
                     results.map(result => <Result key={result.full_name} result={result}/>)
                 }
@@ -50,4 +48,5 @@ const mapStateToProps = ({ search }: AppState) => ({
     search,
 });
 
+export { SearchResults as DisconnectedSearchResults };
 export default connect(mapStateToProps, null)(SearchResults);
