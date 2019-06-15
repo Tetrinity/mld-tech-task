@@ -8,9 +8,15 @@
     .row {
         display: flex;
         justify-content: space-between;
+        opacity: 0.5;
 
-        .dateTag {
-            opacity: 0.5;
+        .stars {
+            display: flex;
+            align-items: center;
+
+            .starNum {
+                margin-left: 0.25rem;
+            }
         }
     }
 }
