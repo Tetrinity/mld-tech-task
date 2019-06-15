@@ -16,19 +16,23 @@ export const buildSearchQuery = (params: {}): string => {
 
 export const search = (searchTerm: string): ThunkAction<Promise<void>, AppState, void, SearchAction> => async (dispatch, getState) => {
     // in a "real" app you'd want to pass in all of these parameters, but I'm hardcoding them here for the sake of keeping things simple
+    const searchQuery = buildSearchQuery({
+        language: searchTerm,
+        created: `>${moment().subtract(1, 'months').format('YYYY-MM-DD')}`,
+    });
+
     const params = {
-        q: buildSearchQuery({
-            language: searchTerm,
-            created: `>${moment().subtract(1, 'month').format('YYYY-MM-DD')}`,
-        }),
         sort: 'stars',
         order: 'desc',
         per_page: 3,
     }
 
+    // axios automatically encodes query parameters. normally this is useful, but the GitHub API doesn't like
+    // URL-encoded plus signs and fails with a 422. instead we circumvent the encoding by manually
+    // appending the query string to the URL before giving it to axios.
     return axios.request<Array<any>>({
         method: 'get',
-        url: 'https://api.github.com/search/repositories',
+        url: `https://api.github.com/search/repositories?q=${searchQuery}`,
         params,
     }).then(response => {
         dispatch(searchSuccess(response.data))

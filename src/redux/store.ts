@@ -1,8 +1,10 @@
 import { createStore, combineReducers, applyMiddleware, compose, Store } from 'redux';
 import thunk from 'redux-thunk';
 
-const rootReducer = combineReducers({
+import searchReducer from './search/reducer';
 
+const rootReducer = combineReducers({
+    search: searchReducer,
 });
 export type AppState = ReturnType<typeof rootReducer>;
 

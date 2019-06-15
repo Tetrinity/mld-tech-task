@@ -120,8 +120,8 @@ describe('Search API', () => {
             // then
             expect(spyAxiosGet).toHaveBeenCalledTimes(1);
             const axiosConfig = spyAxiosGet.mock.calls[0][0];
-            expect(axiosConfig.params.q).toContain('language:javascript');
-            expect(axiosConfig.params.q).toContain('created:>2019-01-17'); // one month before mocked date
+            expect(axiosConfig.url).toContain('language:javascript');
+            expect(axiosConfig.url).toContain('created:>2019-01-17'); // one month before mocked date
         });
 
         it('should dispatch success if the call succeeded', async () => {
